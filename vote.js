@@ -21,15 +21,48 @@ const db = getDatabase(app);
 const votesRef = ref(db, "votes");
 const voteGrid = document.getElementById("vote-grid");
 const voteStatus = document.getElementById("vote-status");
+<<<<<<< Updated upstream
 const submitBtn = document.getElementById("submit-vote");
 let selectedContestantId = null;
+=======
+const voteStorageKey = "internChiliContestVote";
+const thankYouPage = "thankyou.html";
+>>>>>>> Stashed changes
 
-function createContestantCard(contestant, count = 0) {
+function getSavedVote() {
+  return localStorage.getItem(voteStorageKey);
+}
+
+function saveVote(contestantId) {
+  localStorage.setItem(voteStorageKey, contestantId);
+}
+
+function applyVoteLock() {
+  const savedVote = getSavedVote();
+  const buttons = voteGrid.querySelectorAll(".vote-btn");
+
+  buttons.forEach((button) => {
+    const card = button.closest(".vote-card");
+    const isSelected = card?.dataset.contestant === savedVote;
+
+    button.disabled = Boolean(savedVote);
+    button.textContent = isSelected ? "Voted" : "Locked";
+    card?.classList.toggle("is-selected", isSelected);
+    card?.classList.toggle("is-locked", Boolean(savedVote) && !isSelected);
+  });
+
+  if (savedVote) {
+    showStatus("Your vote is locked in. Thanks for choosing your favorite bowl.");
+  }
+}
+
+function createContestantCard(contestant) {
   const card = document.createElement("article");
   card.className = "vote-card";
   card.dataset.contestant = contestant.id;
 
   card.innerHTML = `
+<<<<<<< Updated upstream
     <label class="vote-option">
       <input type="radio" name="selected-contestant" value="${contestant.id}" />
       <div class="vote-content">
@@ -37,6 +70,12 @@ function createContestantCard(contestant, count = 0) {
         <div class="vote-count">Votes: <span>${count}</span></div>
       </div>
     </label>
+=======
+    <h2>${contestant.name}</h2>
+    <div class="vote-card-footer">
+      <button class="vote-btn" type="button">Vote</button>
+    </div>
+>>>>>>> Stashed changes
   `;
 
   const radio = card.querySelector('input[type="radio"]');
@@ -52,18 +91,14 @@ function renderContestants(voteCounts = {}) {
   voteGrid.innerHTML = "";
 
   contestants.forEach((contestant) => {
-    const count = typeof voteCounts[contestant.id] === "number" ? voteCounts[contestant.id] : 0;
-    voteGrid.appendChild(createContestantCard(contestant, count));
+    voteGrid.appendChild(createContestantCard(contestant));
   });
+
+  applyVoteLock();
 }
 
 function updateVoteCounts(voteCounts = {}) {
-  contestants.forEach((contestant) => {
-    const card = voteGrid.querySelector(`.vote-card[data-contestant="${contestant.id}"]`);
-    if (!card) return;
-    const countEl = card.querySelector(".vote-count span");
-    countEl.textContent = voteCounts[contestant.id] || 0;
-  });
+  applyVoteLock();
 }
 
 function showStatus(message, isError = false) {
@@ -71,6 +106,7 @@ function showStatus(message, isError = false) {
   voteStatus.style.color = isError ? "#c21d14" : "#0f3f6c";
 }
 
+<<<<<<< Updated upstream
 async function castVote(contestantId) {
   if (!contestantId) {
     showStatus("No contestant selected.", true);
@@ -78,6 +114,15 @@ async function castVote(contestantId) {
   }
 
   if (submitBtn) submitBtn.disabled = true;
+=======
+async function castVote(contestantId, button) {
+  if (getSavedVote()) {
+    applyVoteLock();
+    return;
+  }
+
+  button.disabled = true;
+>>>>>>> Stashed changes
   showStatus("Submitting your vote...");
 
   try {
@@ -86,14 +131,25 @@ async function castVote(contestantId) {
       return (current || 0) + 1;
     });
 
+    saveVote(contestantId);
+    applyVoteLock();
     showStatus("Thanks for voting! Your choice has been saved.");
     return true;
+    window.setTimeout(() => {
+      window.location.href = thankYouPage;
+    }, 700);
   } catch (error) {
     console.error("Vote failed:", error);
     showStatus("Unable to submit vote. Please try again.", true);
     return false;
   } finally {
+<<<<<<< Updated upstream
     if (submitBtn) submitBtn.disabled = false;
+=======
+    if (!getSavedVote()) {
+      button.disabled = false;
+    }
+>>>>>>> Stashed changes
   }
 }
 
@@ -107,6 +163,7 @@ onValue(votesRef, (snapshot) => {
 });
 
 renderContestants();
+<<<<<<< Updated upstream
 showStatus("Loading current vote counts...");
 
 if (submitBtn) {
@@ -121,4 +178,8 @@ if (submitBtn) {
       window.location.href = 'thankyou.html';
     }
   });
+=======
+if (!getSavedVote()) {
+  showStatus("Loading current vote counts...");
+>>>>>>> Stashed changes
 }
