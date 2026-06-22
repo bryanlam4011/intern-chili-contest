@@ -799,12 +799,13 @@ body.thank-you-page::before {
   line-height: 1.05;
   text-align: center;
   text-shadow: 0 8px 20px rgba(0, 126, 159, 0.24);
+  overflow: visible;
 }
 
 .wave-text span {
   display: inline-block;
   font-size: clamp(3.4rem, 12vw, 8.4rem);
-  line-height: 0.9;
+  line-height: 1;
   margin-right: -0.035em;
   background: linear-gradient(135deg, #ff2f1f 0%, #ff7a18 36%, #ffd029 58%, #00b7c7 100%);
   -webkit-background-clip: text;
