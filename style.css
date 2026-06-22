@@ -329,3 +329,124 @@
     transform: translateZ(0) scale(1.4);
   }
 }
+
+/* Voting page styles */
+body.voting-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 2rem 1rem 4rem;
+  background: linear-gradient(180deg, #daf6ff 0%, #ffffff 45%, #fdf1d7 100%);
+  overflow: auto;
+}
+
+.voting-shell {
+  width: min(1120px, 100%);
+  max-width: 1040px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 28px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+  padding: 2rem;
+  backdrop-filter: blur(8px);
+}
+
+.vote-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.vote-header h1 {
+  margin-bottom: 0.75rem;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  color: #1a3b6e;
+}
+
+.vote-header p {
+  color: #26445f;
+  line-height: 1.6;
+}
+
+.vote-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.vote-card {
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  border: 1px solid rgba(36, 104, 167, 0.12);
+  border-radius: 24px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 240px;
+}
+
+.vote-card h2 {
+  margin-bottom: 0.75rem;
+  font-size: 1.45rem;
+  color: #16325c;
+}
+
+.vote-card p {
+  flex: 1;
+  margin-bottom: 1.25rem;
+  color: #3a4d6b;
+  line-height: 1.5;
+}
+
+.vote-count {
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #0f3f6c;
+}
+
+.vote-btn {
+  font-family: 'Aclonica', sans-serif;
+  border: none;
+  background: #e53119;
+  color: white;
+  border-radius: 18px;
+  padding: 0.95rem 1.2rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.vote-btn:hover,
+.vote-btn:focus {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(229, 49, 25, 0.2);
+}
+
+.vote-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.vote-status {
+  margin-top: 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #16325c;
+  text-align: center;
+}
+
+.back-btn {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.95rem 1.5rem;
+  border-radius: 999px;
+  background: rgba(0, 81, 145, 0.12);
+  color: #0f3f6c;
+  text-decoration: none;
+  font-weight: 700;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.back-btn:hover {
+  transform: translateY(-2px);
+  background: rgba(0, 81, 145, 0.18);
+}

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chili Contest Voting</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Aclonica&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="voting-page">
+  <main class="voting-shell">
+    <header class="vote-header">
+      <h1>Vote for your favorite contestant</h1>
+      <p>See the contestants below and cast your vote. Each vote is stored in Firebase in real time.</p>
+    </header>
+
+    <section id="vote-grid" class="vote-grid" aria-live="polite"></section>
+    <div id="vote-status" class="vote-status"></div>
+  </main>
+
+  <a class="back-btn" href="index.html">Back Home</a>
+
+  <script type="module" src="vote.js"></script>
+</body>
+</html>
