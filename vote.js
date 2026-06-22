@@ -8,26 +8,12 @@ import {
 import { firebaseConfig } from "./firebase-config.js";
 
 const contestants = [
-  {
-    id: "spicy-sunrise",
-    name: "Spicy Sunrise",
-    description: "A bold chili entry with smoky peppers and bright citrus notes."
-  },
-  {
-    id: "lava-lobster",
-    name: "Lava Lobster",
-    description: "Rich, savory flavors balanced by a spicy lobster-inspired twist."
-  },
-  {
-    id: "fiery-flora",
-    name: "Fiery Flora",
-    description: "Herb-forward chili with a floral finish and a spicy punch."
-  },
-  {
-    id: "blazing-breeze",
-    name: "Blazing Breeze",
-    description: "Creamy heat with a fresh, uplifting chili aroma and texture."
-  }
+  { id: "chili-1", name: "Chili #1" },
+  { id: "chili-2", name: "Chili #2" },
+  { id: "chili-3", name: "Chili #3" },
+  { id: "chili-4", name: "Chili #4" },
+  { id: "chili-5", name: "Chili #5" },
+  { id: "chili-6", name: "Chili #6" }
 ];
 
 const app = initializeApp(firebaseConfig);
@@ -43,7 +29,6 @@ function createContestantCard(contestant, count = 0) {
 
   card.innerHTML = `
     <h2>${contestant.name}</h2>
-    <p>${contestant.description}</p>
     <div class="vote-count">Votes: <span>${count}</span></div>
     <button class="vote-btn" type="button">Vote</button>
   `;
