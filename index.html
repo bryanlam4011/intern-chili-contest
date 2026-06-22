@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-#hello
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -11,47 +10,51 @@
   <link rel="stylesheet" href="style.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
 </head>
-<body>
-  <div class="melting-text-container">
-    <h1 class="melting-text">Chili Contest</h1>
-  </div>
-  <div class="sky"></div> 
-    <div class="sand"></div>
-    <div class="wet-sand"></div>
-    <div class="sea">
-        <div class="seafoam"></div>
+<body class="home-page">
+  <div class="home-scene" aria-hidden="true">
+    <div class="lux-sun"></div>
+    <div class="lux-cloud cloud-a"></div>
+    <div class="lux-cloud cloud-b"></div>
+    <div class="lux-sea">
+      <div class="lux-wave wave-a"></div>
+      <div class="lux-wave wave-b"></div>
+      <div class="lux-shimmer"></div>
     </div>
-    <div class="sand-front"></div>
-    <div id="button-container">
-    <div class="buttons">
-    <a href="vote.html" target="_self" class="blob-btn">
-      Vote
-      <span class="blob-btn__inner">
-        <span class="blob-btn__blobs">
-          <span class="blob-btn__blob"></span>
-          <span class="blob-btn__blob"></span>
-          <span class="blob-btn__blob"></span>
-          <span class="blob-btn__blob"></span>
-        </span>
-      </span>
-    </a>
-    <svg class="svg-filters" xmlns="http://www.w3.org/2000/svg" version="1.1">
-  <defs>
-    <filter id="goo">
-      <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10"></feGaussianBlur>
-      <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 21 -7" result="goo"></feColorMatrix>
-      <feBlend in2="goo" in="SourceGraphic" result="mix"></feBlend>
-    </filter>
-  </defs>
-</svg>
-</div>
-</div>
+    <div class="lux-sand"></div>
+  </div>
+
   <div id="palm-lottie"></div>
   <div id="palm-lottie-left" class="leftPalmTree"></div>
+
+  <main class="home-content">
+    <div class="wave-container" aria-label="Chili Contest">
+      <h1 class="wave-text">
+        <span>C</span><span>h</span><span>i</span><span>l</span><span>i</span>
+        <span class="wave-space" aria-hidden="true">&nbsp;</span>
+        <span>C</span><span>o</span><span>n</span><span>t</span><span>e</span><span>s</span><span>t</span>
+      </h1>
+    </div>
+
+    <div class="home-vote-action">
+      <a href="vote.html" target="_self" class="blob-btn">Vote Now
+        <span class="blob-btn__inner">
+          <span class="blob-btn__blobs">
+            <span class="blob-btn__blob"></span>
+            <span class="blob-btn__blob"></span>
+            <span class="blob-btn__blob"></span>
+            <span class="blob-btn__blob"></span>
+          </span>
+        </span>
+      </a>
+    </div>
+  </main>
+
   <script>
     const sharedConfig = { renderer: 'svg', loop: true, autoplay: true, path: 'Palm Tree Leaf Animation.json' };
     lottie.loadAnimation({ ...sharedConfig, container: document.getElementById('palm-lottie') });
     lottie.loadAnimation({ ...sharedConfig, container: document.getElementById('palm-lottie-left') });
   </script>
+
+
 </body>
 </html>

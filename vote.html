@@ -10,10 +10,22 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body class="voting-page">
+  <div class="vote-beach-scene" aria-hidden="true">
+    <div class="vote-sun"></div>
+    <div class="vote-cloud vote-cloud-one"></div>
+    <div class="vote-cloud vote-cloud-two"></div>
+    <div class="vote-ocean">
+      <div class="vote-wave vote-wave-one"></div>
+      <div class="vote-wave vote-wave-two"></div>
+    </div>
+    <div class="vote-shoreline"></div>
+  </div>
+
   <main class="voting-shell">
     <header class="vote-header">
+      <p class="vote-kicker">Beachside Chili Ballot</p>
       <h1>Vote for your favorite contestant</h1>
-      <p>See the contestants below and cast your vote. Each vote is stored in Firebase in real time.</p>
+      <p>Pick the bowl bringing the biggest splash of flavor. Live vote totals update as the beach party decides.</p>
     </header>
 
     <section id="vote-grid" class="vote-grid" aria-live="polite"></section>
