@@ -60,6 +60,12 @@ function applyVoteLock() {
 
   const selectedContestant = contestants.find((contestant) => contestant.id === savedVote);
   showStatus(`Your vote is already recorded for ${selectedContestant ? selectedContestant.name : "your choice"}.`);
+
+  // Reveal post-vote links (thank you / results)
+  const postVoteLinks = document.getElementById('post-vote-links');
+  if (postVoteLinks) {
+    postVoteLinks.style.display = 'block';
+  }
 }
 
 function createContestantCard(contestant) {

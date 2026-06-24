@@ -47,6 +47,9 @@
         </span>
       </a>
     </div>
+    <div id="home-post-vote" style="display:none;margin-top:1rem;text-align:center;">
+      <a class="blob-btn" href="results.html">View Results</a>
+    </div>
   </main>
 
   <script>
@@ -54,7 +57,22 @@
     lottie.loadAnimation({ ...sharedConfig, container: document.getElementById('palm-lottie') });
     lottie.loadAnimation({ ...sharedConfig, container: document.getElementById('palm-lottie-left') });
   </script>
+</script>
 
+  <script>
+    (function(){
+      try {
+        const key = 'internChiliContestVote';
+        const hasVoted = !!localStorage.getItem(key);
+        if (hasVoted) {
+          const el = document.getElementById('home-post-vote');
+          if (el) el.style.display = 'block';
+        }
+      } catch (e) {
+        // ignore
+      }
+    })();
+  </script>
 
 </body>
 </html>

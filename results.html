@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Results</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="voting-page">
+  <main class="voting-shell" style="text-align:center;">
+    <h1 style="color:#26445f">Contest Results</h1>
+    <p id="winner-text" style="font-size:1.1rem;color:#26445f;margin-top:1rem;">Calculating winner...</p>
+
+    <div style="margin-top:1.5rem;">
+      <h2 id="winner-name" style="color:#26445f;margin-bottom:0.25rem;"></h2>
+      <p id="winner-count" style="color:#26445f;margin-top:0;"> </p>
+    </div>
+
+    <div style="margin-top:2rem;">
+      <h3 style="color:#26445f">Full Results</h3>
+      <ul id="results-list" style="list-style:none;padding:0;margin-top:0.5rem;color:#26445f;"></ul>
+    </div>
+
+    <div style="margin-top:2rem;display:flex;gap:1rem;justify-content:center;">
+      <a class="blob-btn" href="index.html">Back Home</a>
+      <a class="blob-btn" href="vote.html">Vote</a>
+    </div>
+  </main>
+
+  <script type="module" src="results.js"></script>
+</body>
+</html>
