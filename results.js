@@ -23,9 +23,7 @@ const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
 const winnerNameEl = document.getElementById('winner-name');
-const winnerCountEl = document.getElementById('winner-count');
 const winnerTextEl = document.getElementById('winner-text');
-const resultsListEl = document.getElementById('results-list');
 
 async function fetchResults() {
   try {
@@ -41,20 +39,14 @@ async function fetchResults() {
         max = count;
         winner = { ...c, count };
       }
-
-      const li = document.createElement('li');
-      li.textContent = `${c.name}: ${count} vote${count !== 1 ? 's' : ''}`;
-      resultsListEl.appendChild(li);
     });
 
     if (winner) {
-      winnerTextEl.textContent = 'Winner:';
+      winnerTextEl.textContent = 'Current winner:';
       winnerNameEl.textContent = winner.name;
-      winnerCountEl.textContent = `${winner.count} vote${winner.count !== 1 ? 's' : ''}`;
     } else {
       winnerTextEl.textContent = 'No votes yet.';
       winnerNameEl.textContent = '';
-      winnerCountEl.textContent = '';
     }
   } catch (err) {
     console.error('Failed to load results', err);
