@@ -44,6 +44,24 @@ async function fetchResults() {
     if (winner) {
       winnerTextEl.textContent = 'Current winner:';
       winnerNameEl.textContent = winner.name;
+      
+      // Trigger confetti cannons from bottom left and right corners
+      confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { x: 0, y: 1 }
+      });
+      confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { x: 1, y: 1 }
+      });
+      // Trigger confetti cannon from center
+      confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { x: 0.5, y: 1 }
+      });
     } else {
       winnerTextEl.textContent = 'No votes yet.';
       winnerNameEl.textContent = '';
