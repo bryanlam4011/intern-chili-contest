@@ -1326,3 +1326,41 @@ body.voting-page {
     transition-duration: 0.001ms !important;
   }
 }
+@media(max-width: 720px) {
+  .wave-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 24rem;
+  }
+  .blob-btn {
+    z-index: 1;
+    position: relative;
+    padding: 20px 46px;
+    margin-bottom: 30px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #e53119;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: white;
+    outline: none;
+    border: none;
+    transition: color 0.5s;
+    cursor: pointer;
+    border-radius: 30px;
+    text-decoration: none;
+    bottom: -20.5rem;
+  }
+  .leftPalmTree {
+        left: -12.75rem;
+        bottom: -1rem;
+        transform: scale(0) rotateY(180deg);
+  }
+  #palm-lottie {
+        right: -23.75rem;
+        bottom: 4rem;
+        transform: scale(2);
+  }
+}
