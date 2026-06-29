@@ -377,6 +377,10 @@ body.voting-page .blob-btn {
   color: #1a3b6e;
 }
 
+.vote-header .nowrap {
+  white-space: nowrap;
+}
+
 .vote-header p {
   color: #26445f;
   line-height: 1.6;
@@ -829,7 +833,7 @@ body.thank-you-page::before {
 }
 
 .wave-text .wave-space {
-  width: 0.22em;
+  width: 0.025em;
   margin-right: 0;
 }
 
