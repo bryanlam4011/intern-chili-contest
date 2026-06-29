@@ -72,4 +72,6 @@ async function fetchResults() {
   }
 }
 
-fetchResults();
+fetchResults().then(r => {
+  console.log(r); // Using the variable fixes the warning
+});
