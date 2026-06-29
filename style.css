@@ -1341,7 +1341,7 @@ body.voting-page {
   }
 }
 @media(max-width: 720px) {
-  .wave-container {
+  .home-page .wave-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1351,7 +1351,7 @@ body.voting-page {
     width: 100%;
     animation: headerSlideUp 1.5s ease-in-out forwards !important;
   }
-  .blob-btn {
+  .home-page .blob-btn {
     z-index: 1;
     position: relative;
     padding: 20px 46px;
@@ -1380,7 +1380,7 @@ body.voting-page {
         bottom: 4rem;
         transform: scale(2);
   }
-  .back-btn {
+  .home-page .back-btn {
     position: absolute;
     z-index: 3;
     margin-top: 1.25rem;
