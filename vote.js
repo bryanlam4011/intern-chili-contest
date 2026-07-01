@@ -2,17 +2,18 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/12.15.0/fireba
 import {
   getDatabase,
   ref,
-  runTransaction
+  runTransaction,
+  get
 } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-database.js";
 import { firebaseConfig } from "./firebase-config.js";
 
 const contestants = [
-  { id: "chili-1", name: "Chili #1" },
-  { id: "chili-2", name: "Chili #2" },
-  { id: "chili-3", name: "Chili #3" },
-  { id: "chili-4", name: "Chili #4" },
-  { id: "chili-5", name: "Chili #5" },
-  { id: "chili-6", name: "Chili #6" }
+  { id: "chili-1", name: "Blazing Bryan's Chili" },
+  { id: "chili-2", name: "Smoky Mountain Chili" },
+  { id: "chili-3", name: "Three Alarm Chili" },
+  { id: "chili-4", name: "Grandma's Secret Chili" },
+  { id: "chili-5", name: "Volcano Verde Chili" },
+  { id: "chili-6", name: "Backyard BBQ Chili" }
 ];
 
 const app = initializeApp(firebaseConfig);
@@ -60,12 +61,6 @@ function applyVoteLock() {
 
   const selectedContestant = contestants.find((contestant) => contestant.id === savedVote);
   showStatus(`Your vote is already recorded for ${selectedContestant ? selectedContestant.name : "your choice"}.`);
-
-  // Reveal post-vote links (thank you / results)
-  const postVoteLinks = document.getElementById('post-vote-links');
-  if (postVoteLinks) {
-    postVoteLinks.style.display = 'block';
-  }
 }
 
 function createContestantCard(contestant) {
@@ -93,11 +88,29 @@ function createContestantCard(contestant) {
   return card;
 }
 
-function renderContestants() {
+async function clearStaleVoteLock() {
+  const savedVote = getSavedVote();
+  if (!savedVote) {
+    return;
+  }
+
+  try {
+    const snap = await get(ref(db, 'votes'));
+    if (!snap.exists()) {
+      // The votes node was cleared out (new contest round) — release the local lock.
+      localStorage.removeItem(voteStorageKey);
+    }
+  } catch (error) {
+    console.error("Failed to check vote state:", error);
+  }
+}
+
+async function renderContestants() {
   voteGrid.innerHTML = "";
   contestants.forEach((contestant) => {
     voteGrid.appendChild(createContestantCard(contestant));
   });
+  await clearStaleVoteLock();
   applyVoteLock();
 }
 
@@ -138,11 +151,11 @@ async function castVote(contestantId) {
   }
 }
 
-renderContestants();
-
-if (!getSavedVote()) {
-  showStatus("Choose a chili and submit your vote.");
-}
+renderContestants().then(() => {
+  if (!getSavedVote()) {
+    showStatus("Choose a chili and submit your vote.");
+  }
+});
 
 if (submitBtn) {
   submitBtn.addEventListener('click', async () => {

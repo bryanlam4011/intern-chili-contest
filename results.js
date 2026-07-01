@@ -11,12 +11,12 @@ if (!savedVote) {
 }
 
 const contestants = [
-  { id: "chili-1", name: "Chili #1" },
-  { id: "chili-2", name: "Chili #2" },
-  { id: "chili-3", name: "Chili #3" },
-  { id: "chili-4", name: "Chili #4" },
-  { id: "chili-5", name: "Chili #5" },
-  { id: "chili-6", name: "Chili #6" }
+  { id: "chili-1", name: "Blazing Bryan's Chili" },
+  { id: "chili-2", name: "Smoky Mountain Chili" },
+  { id: "chili-3", name: "Three Alarm Chili" },
+  { id: "chili-4", name: "Grandma's Secret Chili" },
+  { id: "chili-5", name: "Volcano Verde Chili" },
+  { id: "chili-6", name: "Backyard BBQ Chili" }
 ];
 
 const app = initializeApp(firebaseConfig);
@@ -42,9 +42,11 @@ async function fetchResults() {
     });
 
     if (winner) {
-      winnerTextEl.textContent = 'Current winner:';
+      winnerTextEl.textContent = 'Winner:';
       winnerNameEl.textContent = winner.name;
-      
+      winnerTextEl.classList.add('winner-reveal');
+      winnerNameEl.classList.add('winner-reveal');
+
       // Trigger confetti cannons from bottom left and right corners
       confetti({
         particleCount: 100,
